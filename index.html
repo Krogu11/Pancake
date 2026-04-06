@@ -323,17 +323,22 @@
     </section>
 
     <section class="gallery-section" id="galerie">
-      <div class="container section-head">
-        <p class="section-kicker">Galerie</p>
-        <h2>Eindrücke aus dem House of Pancake</h2>
-        <p>Ein Blick auf Teller, Atmosphäre und die warmen Momente, die die Geschichte des Hauses begleiten.</p>
-      </div>
-      <div class="container gallery-grid">
-        <img src="assets/gallery-1.jpg" alt="Gericht aus dem House of Pancake">
-        <img src="assets/gallery-2.jpg" alt="Pfannkuchenhaus Impression">
-        <img src="assets/gallery-3.jpg" alt="Innenansicht oder Gericht aus dem Restaurant">
-        <img src="assets/gallery-4.jpg" alt="Speise im House of Pancake">
-        <img src="assets/gallery-5.jpg" alt="Weitere Impression aus dem House of Pancake">
+      <div class="container gallery-carousel-shell">
+        <div class="gallery-controls" aria-label="Galerie blättern">
+          <button class="gallery-control" type="button" data-gallery-prev aria-label="Vorheriges Bild">‹</button>
+          <button class="gallery-control" type="button" data-gallery-next aria-label="Nächstes Bild">›</button>
+        </div>
+        <div class="gallery-strip" data-gallery-track tabindex="0" aria-label="Galerie mit Bildern zum Durchblättern">
+          <img src="assets/Pancake Story/1.jpg" alt="Pancake Story Bild 1">
+          <img src="assets/Pancake Story/2.jpg" alt="Pancake Story Bild 2">
+          <img src="assets/Pancake Story/3.jpg" alt="Pancake Story Bild 3">
+          <img src="assets/Pancake Story/4.jpg" alt="Pancake Story Bild 4">
+          <img src="assets/Pancake Story/5.jpg" alt="Pancake Story Bild 5">
+          <img src="assets/Pancake Story/6.jpg" alt="Pancake Story Bild 6">
+          <img src="assets/Pancake Story/7.jpg" alt="Pancake Story Bild 7">
+          <img src="assets/Pancake Story/8.jpg" alt="Pancake Story Bild 8">
+          <img src="assets/Pancake Story/9.jpg" alt="Pancake Story Bild 9">
+        </div>
       </div>
     </section>
 
@@ -399,6 +404,33 @@
           scrollByCard(1);
         }
       });
+
+      const galleryTrack = document.querySelector("[data-gallery-track]");
+      const galleryPrev = document.querySelector("[data-gallery-prev]");
+      const galleryNext = document.querySelector("[data-gallery-next]");
+
+      if (galleryTrack && galleryPrev && galleryNext) {
+        const scrollGallery = (direction) => {
+          const image = galleryTrack.querySelector("img");
+          const amount = image ? image.getBoundingClientRect().width + 16 : galleryTrack.clientWidth;
+          galleryTrack.scrollBy({ left: amount * direction, behavior: "smooth" });
+        };
+
+        galleryPrev.addEventListener("click", () => scrollGallery(-1));
+        galleryNext.addEventListener("click", () => scrollGallery(1));
+
+        galleryTrack.addEventListener("keydown", (event) => {
+          if (event.key === "ArrowLeft") {
+            event.preventDefault();
+            scrollGallery(-1);
+          }
+
+          if (event.key === "ArrowRight") {
+            event.preventDefault();
+            scrollGallery(1);
+          }
+        });
+      }
     }());
   </script>
 </body>
