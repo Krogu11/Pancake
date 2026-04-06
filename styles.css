@@ -232,6 +232,13 @@ a {
   box-shadow: var(--shadow);
 }
 
+.info-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  min-height: 100%;
+}
+
 .info-card h2,
 .story-section h2,
 .menu-section h2,
@@ -241,6 +248,21 @@ a {
 .legal-page h1,
 .legal-page h2 {
   font-size: clamp(2.2rem, 4vw, 3.8rem);
+}
+
+.info-card h2 {
+  font-size: clamp(1.8rem, 3vw, 2.6rem);
+  line-height: 1.02;
+  margin-bottom: 0.75rem;
+}
+
+.info-card p {
+  margin: 0;
+  line-height: 1.7;
+}
+
+.info-card p + p {
+  margin-top: 0.7rem;
 }
 
 .story-layout,
