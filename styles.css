@@ -205,6 +205,10 @@ a {
   padding: 5rem 0;
 }
 
+.story-section .container {
+  width: min(1280px, calc(100% - 1rem));
+}
+
 .info-grid,
 .story-layout,
 .split-layout,
@@ -343,7 +347,7 @@ a {
 
 .story-card-inner {
   display: grid;
-  grid-template-columns: 48% 52%;
+  grid-template-columns: 56% 44%;
   align-items: stretch;
   min-height: 560px;
 }
@@ -365,7 +369,7 @@ a {
 }
 
 .story-card-copy {
-  padding: 2.4rem 2.3rem;
+  padding: 2.3rem 2rem;
   color: var(--muted);
   display: flex;
   flex-direction: column;
@@ -539,6 +543,10 @@ a {
 
   .story-journey {
     grid-auto-columns: min(92vw, 720px);
+  }
+
+  .story-section .container {
+    width: min(100%, calc(100% - 1rem));
   }
 
   .story-card-inner,
