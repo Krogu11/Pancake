@@ -270,7 +270,63 @@ a {
 
 .story-journey {
   display: grid;
-  gap: 1.2rem;
+  grid-auto-flow: column;
+  grid-auto-columns: min(86vw, 980px);
+  gap: 1rem;
+  overflow-x: auto;
+  padding: 0.2rem 0 1rem;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(122, 47, 11, 0.35) transparent;
+}
+
+.story-journey::-webkit-scrollbar {
+  height: 10px;
+}
+
+.story-journey::-webkit-scrollbar-thumb {
+  background: rgba(122, 47, 11, 0.35);
+  border-radius: 999px;
+}
+
+.story-carousel-shell {
+  display: grid;
+  gap: 1rem;
+}
+
+.story-carousel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  color: var(--muted);
+}
+
+.story-carousel-header p {
+  margin: 0;
+}
+
+.story-controls {
+  display: flex;
+  gap: 0.7rem;
+}
+
+.story-control {
+  width: 46px;
+  height: 46px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--accent-dark);
+  font-size: 1.5rem;
+  line-height: 1;
+  cursor: pointer;
+  box-shadow: var(--shadow);
+}
+
+.story-control:hover,
+.story-control:focus-visible {
+  background: #fff6ec;
 }
 
 .story-card {
@@ -282,21 +338,32 @@ a {
   background: var(--surface);
   border: 1px solid var(--line);
   box-shadow: var(--shadow);
+  scroll-snap-align: start;
 }
 
-.story-card-reverse {
+.story-card-inner {
+  display: grid;
+  grid-template-columns: 1.05fr 1fr;
+  min-height: 100%;
+}
+
+.story-card-reverse .story-card-inner {
   grid-template-columns: 1fr 1.05fr;
 }
 
 .story-card-image img {
-  height: 100%;
-  min-height: 320px;
+  width: 100%;
+  aspect-ratio: 4 / 3;
   object-fit: cover;
+  height: 100%;
 }
 
 .story-card-copy {
   padding: 1.8rem;
   color: var(--muted);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .story-step {
@@ -444,8 +511,17 @@ a {
     grid-template-columns: 1fr;
   }
 
-  .story-card,
-  .story-card-reverse {
+  .story-carousel-header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .story-journey {
+    grid-auto-columns: min(92vw, 720px);
+  }
+
+  .story-card-inner,
+  .story-card-reverse .story-card-inner {
     grid-template-columns: 1fr;
   }
 
@@ -478,6 +554,10 @@ a {
 
   .hero-content {
     padding: 6rem 0 3.5rem;
+  }
+
+  .story-card-copy {
+    padding: 1.35rem;
   }
 
   .gallery-grid {
