@@ -330,54 +330,47 @@ a {
 }
 
 .story-card {
-  display: grid;
-  grid-template-columns: 1.05fr 1fr;
-  gap: 0;
+  display: block;
   border-radius: var(--radius);
   overflow: hidden;
   background: var(--surface);
   border: 1px solid var(--line);
   box-shadow: var(--shadow);
   scroll-snap-align: start;
+  max-width: 1120px;
+  margin: 0 auto;
 }
 
 .story-card-inner {
   display: grid;
-  grid-template-columns: 1.25fr 0.95fr;
-  min-height: 100%;
-}
-
-.story-card-reverse .story-card-inner {
-  grid-template-columns: 0.95fr 1.25fr;
+  grid-template-columns: 48% 52%;
+  align-items: stretch;
+  min-height: 560px;
 }
 
 .story-card-image {
-  display: grid;
-  align-items: center;
-  padding: 1.2rem;
-  background:
-    radial-gradient(circle at top left, rgba(255, 255, 255, 0.75), transparent 38%),
-    linear-gradient(180deg, #f9f1e4, #efe0c8);
+  height: 100%;
 }
 
 .story-card-image img {
   width: 100%;
   height: 100%;
-  max-height: 540px;
-  aspect-ratio: 4 / 3;
-  object-fit: contain;
+  max-height: none;
+  aspect-ratio: auto;
+  object-fit: cover;
   object-position: center;
-  border-radius: 20px;
-  background: #f8efdf;
-  box-shadow: 0 16px 40px rgba(58, 34, 17, 0.1);
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
 }
 
 .story-card-copy {
-  padding: 2.1rem 2rem;
+  padding: 2.4rem 2.3rem;
   color: var(--muted);
   display: flex;
   flex-direction: column;
   justify-content: center;
+  background: linear-gradient(180deg, rgba(255, 250, 243, 0.92), rgba(247, 238, 224, 0.98));
 }
 
 .story-step {
@@ -406,8 +399,8 @@ a {
 
 .story-card-copy p {
   margin: 0;
-  font-size: 1.02rem;
-  line-height: 1.75;
+  font-size: 1.04rem;
+  line-height: 1.8;
 }
 
 .story-card-copy p + p {
@@ -551,10 +544,15 @@ a {
   .story-card-inner,
   .story-card-reverse .story-card-inner {
     grid-template-columns: 1fr;
+    min-height: 0;
   }
 
   .story-card-image {
-    padding: 1rem 1rem 0;
+    height: auto;
+  }
+
+  .story-card-copy {
+    padding: 1.7rem 1.5rem 1.8rem;
   }
 
   .gallery-grid {
@@ -593,7 +591,9 @@ a {
   }
 
   .story-card-image img {
-    max-height: 420px;
+    height: auto;
+    min-height: 280px;
+    max-height: 360px;
   }
 
   .gallery-grid {
