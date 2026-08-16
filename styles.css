@@ -1,4 +1,12 @@
 @font-face {
+  font-family: "Alfa Slab One";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("assets/fonts/AlfaSlabOne-Regular.ttf") format("truetype");
+}
+
+@font-face {
   font-family: "Cormorant Garamond";
   font-style: normal;
   font-weight: 500;
@@ -118,10 +126,20 @@ a {
   padding: 0.85rem 0;
 }
 
-.brand img {
-  width: 220px;
-  max-width: 48vw;
-  filter: brightness(0) saturate(100%) opacity(0.9);
+.brand {
+  display: inline-flex;
+  align-items: center;
+  min-height: 52px;
+}
+
+.brand-wordmark {
+  display: inline-block;
+  font-family: "Alfa Slab One", "Cormorant Garamond", serif;
+  font-size: clamp(1.9rem, 3.2vw, 2.95rem);
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  line-height: 1;
+  color: var(--text);
 }
 
 .site-nav {
@@ -725,8 +743,12 @@ a {
     flex-direction: column;
   }
 
-  .brand img {
-    width: 180px;
+  .brand {
+    min-height: auto;
+  }
+
+  .brand-wordmark {
+    font-size: clamp(1.6rem, 8vw, 2.15rem);
   }
 
   .hero {
